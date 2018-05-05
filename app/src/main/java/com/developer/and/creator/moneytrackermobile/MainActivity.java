@@ -45,7 +45,13 @@ public class MainActivity extends AppCompatActivity {
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                adapter.add(new Item(name.getText().toString(), Integer.valueOf(price.getText().toString())));
+                try{
+                    adapter.add(new Item(name.getText().toString(), Integer.valueOf(price.getText().toString())));
+                    name.setText("");
+                    price.setText("");
+                } catch (Exception e) {
+                    //исключение, если поле является пустым
+                }
             }
         });
     }

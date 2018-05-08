@@ -52,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
 
                 } catch (Exception e) {
                     //исключение, если поле является пустым
+                    price.requestFocus();
                 }
             }
         });

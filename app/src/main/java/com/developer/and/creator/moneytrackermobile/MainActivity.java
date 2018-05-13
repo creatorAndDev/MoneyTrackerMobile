@@ -76,6 +76,7 @@ public class MainActivity extends AppCompatActivity {
 //                    int number = Integer.parseInt(otherPrice);
 
                     //заносим в массив
+                    /**Продебажить тут. Последвательность выполенния стека**/
                     arr.add(Float.parseFloat(price.getText().toString()));
 
                     number1 = arr.get(0);
@@ -93,6 +94,8 @@ public class MainActivity extends AppCompatActivity {
                     //обнуляем поля
                     name.setText("");
                     price.setText("");
+
+                    /**До конца**/
 
                 } catch (Exception e) {
                     //исключение, если поле для денег является пустым

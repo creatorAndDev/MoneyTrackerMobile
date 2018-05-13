@@ -20,7 +20,7 @@
                 android:id="@+id/name"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:textSize="@dimen/size_middle"
+                android:textSize="@dimen/size_medium"
                 android:background="@android:color/transparent"
                 android:hint="@string/enter_name"
                 android:inputType="textCapSentences|textAutoCorrect"/>
@@ -51,10 +51,10 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="грн"
-                android:paddingLeft="@dimen/padding_small"
+                android:paddingLeft="@dimen/padding_smaller"
                 android:gravity="center_vertical"
                 android:textSize="@dimen/size_small"/>
+            <!--android:text="@string/price"-->
         </LinearLayout>
 
         <LinearLayout
@@ -72,19 +72,73 @@
 
     </LinearLayout>
 
-    <ListView
-        android:id="@+id/items"
-
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/background"
+        android:layout_weight="1"
+        android:layout_height="0dp">
+        <ListView
+            android:id="@+id/items"
 
-        android:divider="@android:color/transparent"
-        android:dividerHeight="@dimen/divider_small"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/background"
 
-        android:padding="@dimen/padding_small"
-        tools:listitem="@layout/item">
+            android:divider="@android:color/transparent"
+            android:dividerHeight="@dimen/divider_small"
 
-    </ListView>
+            android:padding="@dimen/padding_small"
+            tools:listitem="@layout/item">
+
+        </ListView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:orientation="horizontal"
+        android:padding="@dimen/padding_small">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/textPriceOther"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/other_price"
+                android:gravity="bottom"
+                android:textSize="@dimen/size_medium"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <TextView
+                android:id="@+id/priceOther"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="0"
+                android:gravity="bottom"
+                android:textAlignment="textEnd"
+                android:textSize="@dimen/size_middle"
+                tools:ignore="RtlCompat" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/currency"
+                android:paddingLeft="@dimen/padding_smaller"
+                android:textAlignment="textEnd"
+                android:gravity="bottom"
+                android:textSize="@dimen/size_small"
+                tools:ignore="RtlCompat" />
+        </LinearLayout>
+    </LinearLayout>
 
 </LinearLayout>

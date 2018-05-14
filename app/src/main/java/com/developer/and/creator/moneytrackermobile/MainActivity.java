@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.text.Editable;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,18 +17,17 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-    private String otherPrice;
-    /**Результат который заносится в масив для обработки*/
+    /**Результат который заносится в масив для обработки (массив нужен для сравнения чисел полученых ранее с новыми)*/
     ArrayList<Float> arr = new ArrayList<Float>();
-    /**Первое введенное число*/
+    /**Введенное число*/
     float number1;
-    /**Второе введенное число*/
+    /**Ранее полученое число*/
     float number2;
 
     /**флаг для проверки введеного числа (одно или два)**/
     boolean countFiledNumber = false;
 
-    //список товаров
+    /**список товаров**/
     static class Item {
 
         String name;
@@ -47,24 +45,17 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.main);
 
 
-        //определеяем наши элементы из xml main
+        /**определеяем наши элементы из xml main**/
         final EditText name = (EditText) findViewById(R.id.name);
         final EditText price = (EditText) findViewById(R.id.price);
         final Button add = (Button) findViewById(R.id.add);
         final ListView items = (ListView) findViewById(R.id.items);
 
-//        final TextView view = (TextView) findViewById(R.id.priceOther);
-
-        //создаем адаптер для ListView что бы передавать в него полученные данные
+        /**создаем адаптер для ListView что бы передавать в него полученные данные**/
         final ItemsAdapter adapter = new ItemsAdapter();
         items.setAdapter(adapter);
 
-        //метод по обработке цены для вывода ее снизу в общем показатели
-//        public void currency(String otherPrice) {
-//            this.otherPrice = otherPrice;
-//        }
-
-        //слушатель по кнопке
+        /**слушатель по кнопке**/
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -107,14 +98,10 @@ public class MainActivity extends AppCompatActivity {
 
                 } catch (Exception e) {
                     //исключение, если поле для денег является пустым
-//                    name.requestFocus();
                     price.requestFocus();
-
                     //выводим сообщение об ошибке
                     Toast toast = Toast.makeText(getApplicationContext(),
-                            "Заполните все поля. Или укажите цену.", Toast.LENGTH_SHORT);
-//                    Toast toast = Toast.makeText(getApplicationContext(),
-//                            "Зашел в проверку Catch", Toast.LENGTH_SHORT);
+                            "Проверьте правильность набора цены", Toast.LENGTH_SHORT);
                     toast.setGravity(Gravity.CENTER, 0, 0);
                     toast.show();
                 }

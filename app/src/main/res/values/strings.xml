@@ -1,8 +1,9 @@
 <resources>
     <string name="app_name">Мои покупки</string>
     <string name="enter_name">Название товара</string>
-    <string name="other_price">Общая стоимость:</string>
+    <string name="other_price">Сумма:</string>
     <string name="enter_price">0</string>
+    <string name="out_price">0.0</string>
     <string name="currency">грн</string>
     <string name="price">Цена:</string>
     <string name="add">+</string>

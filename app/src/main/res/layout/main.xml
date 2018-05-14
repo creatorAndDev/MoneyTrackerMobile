@@ -23,7 +23,22 @@
                 android:textSize="@dimen/size_medium"
                 android:background="@android:color/transparent"
                 android:hint="@string/enter_name"
+                android:focusableInTouchMode="true"
                 android:inputType="textCapSentences|textAutoCorrect"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@android:color/white">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:paddingLeft="@dimen/padding_smaller"
+                android:text="@string/price"
+                android:textColor="@color/colorGray"
+                android:gravity="center_vertical"
+                android:textSize="@dimen/size_smaller"/>
         </LinearLayout>
 
         <LinearLayout
@@ -37,24 +52,12 @@
                 android:textSize="@dimen/size_middle"
                 android:background="@android:color/transparent"
                 android:gravity="center_vertical"
-                android:textAlignment="textEnd"
+                android:textAlignment="textStart"
                 android:hint="@string/enter_price"
+                android:paddingLeft="@dimen/divider_small"
                 android:focusableInTouchMode="true"
                 tools:ignore="RtlCompat"
                 android:inputType="phone"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:background="@android:color/white">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:paddingLeft="@dimen/padding_smaller"
-                android:gravity="center_vertical"
-                android:textSize="@dimen/size_small"/>
-            <!--android:text="@string/price"-->
         </LinearLayout>
 
         <LinearLayout
@@ -109,6 +112,7 @@
                 android:layout_height="match_parent"
                 android:text="@string/other_price"
                 android:gravity="bottom"
+                android:textColor="@color/colorGray"
                 android:textSize="@dimen/size_medium"/>
         </LinearLayout>
 
@@ -136,6 +140,7 @@
                 android:paddingLeft="@dimen/padding_smaller"
                 android:textAlignment="textEnd"
                 android:gravity="bottom"
+                android:textColor="@color/colorGray"
                 android:textSize="@dimen/size_small"
                 tools:ignore="RtlCompat" />
         </LinearLayout>

@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -12,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -23,6 +25,9 @@ public class MainActivity extends AppCompatActivity {
     float number1;
     /**Второе введенное число*/
     float number2;
+
+    /**флаг для проверки введеного числа (одно или два)**/
+    boolean countFiledNumber = false;
 
     //список товаров
     static class Item {
@@ -64,72 +69,58 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 try{
-//                    if(name.getText().toString() != "") {
-//                        adapter.add(new Item(name.getText().toString(), Integer.valueOf(price.getText().toString())));
-//                    } else {
-//                        name.requestFocus();
-//                    }
                     adapter.add(new Item(name.getText().toString(), Integer.valueOf(price.getText().toString())));
 
-                    //запись цены
-//                    String otherPrice = price.getText().toString();
-//                    int number = Integer.parseInt(otherPrice);
-
                     //заносим в массив
-                    /**Продебажить тут. Последвательность выполенния стека**/
                     arr.add(Float.parseFloat(price.getText().toString()));
 
-                    number1 = arr.get(0);
-                    number2 = arr.get(1);
+                    //проверяем флаг на количество введеных раз чисел
+                    if (countFiledNumber == false) {
+                        ((TextView) findViewById(R.id.priceOther)).setText(arr.get(0).toString());
 
-                    arr.removeAll(arr);
-                    arr.add(number1 + number2);
+                        //обнуляем поля
+                        name.setText("");
+                        price.setText("");
+                        countFiledNumber = true;
 
-//        view.setText("" + number);
-                    ((TextView) findViewById(R.id.priceOther)).setText(String.format("%.0f", arr.get(0)));
-//                    view.setText(String.format("%.0f", arr.get(0)));
-                    //отпавляем наше преобразованое число в метод и там выводим его результат
-//                    display(number);
+                        //возвращаем фокус на имя
+                        name.requestFocus();
+                    } else {
+                        //меняем флаг в зависимости если уже раз хотя бы вводили
+                        countFiledNumber = true;
+
+                        //заносим наши числа
+                        number1 = arr.get(0);
+                        number2 = arr.get(1);
+
+                        arr.removeAll(arr);
+                        arr.add(number1 + number2);
+                        ((TextView) findViewById(R.id.priceOther)).setText(arr.get(0).toString());
+                    }
 
                     //обнуляем поля
                     name.setText("");
                     price.setText("");
 
-                    /**До конца**/
+                    //возвращаем фокус на имя
+                    name.requestFocus();
 
                 } catch (Exception e) {
                     //исключение, если поле для денег является пустым
+//                    name.requestFocus();
                     price.requestFocus();
+
+                    //выводим сообщение об ошибке
+                    Toast toast = Toast.makeText(getApplicationContext(),
+                            "Заполните все поля. Или укажите цену.", Toast.LENGTH_SHORT);
+//                    Toast toast = Toast.makeText(getApplicationContext(),
+//                            "Зашел в проверку Catch", Toast.LENGTH_SHORT);
+                    toast.setGravity(Gravity.CENTER, 0, 0);
+                    toast.show();
                 }
             }
         });
     }
-
-//    private void display(int number) {
-//        TextView view = (TextView) findViewById(R.id.priceOther);
-//
-//        //заносим в массив
-//        arr.add(Float.parseFloat(price.getText().toString()));
-//
-//        number1 = arr.get(0);
-//        number2 = arr.get(1);
-//
-////        arr.removeAll(arr);
-//        arr.add(number1 + number2);
-//
-////        view.setText("" + number);
-//        view.setText(String.format("%.0f", arr.get(0)));
-//
-//        //запись цены
-////        String otherPrice = price.getText().toString();
-//
-//        //переобразовываем в инт, счетаем, потом в преобразовываем в стринг и выводим в поле textview нашу сумму
-////        int number = Integer.parseInt(otherPrice);
-////        int i = number;
-////        int result = i + i;
-////        String s = String.valueOf(result);
-////        ((TextView) findViewById(R.id.priceOther)).setText(s);
-//    }
 
     //
     private class ItemsAdapter extends ArrayAdapter<Item> {

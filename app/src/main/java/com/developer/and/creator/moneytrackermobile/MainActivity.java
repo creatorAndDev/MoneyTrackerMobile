@@ -31,9 +31,9 @@ public class MainActivity extends AppCompatActivity {
     static class Item {
 
         String name;
-        int price;
+        float price;
 
-        Item(String name, int price) {
+        Item(String name, float price) {
             this.name = name;
             this.price = price;
         };
@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 try{
-                    adapter.add(new Item(name.getText().toString(), Integer.valueOf(price.getText().toString())));
+                    adapter.add(new Item(name.getText().toString(), Float.valueOf(price.getText().toString())));
 
                     //заносим в массив
                     arr.add(Float.parseFloat(price.getText().toString()));
